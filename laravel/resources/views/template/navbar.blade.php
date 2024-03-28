@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="{{ asset('import/assets/css/Testimonials-images.css') }}">
     <link rel="stylesheet" href="{{ asset('import/assets/css/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('import/assets/css/css/Simple-Slider-swiper-bundle.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css') }}">
 </head>
 
 <body>
@@ -25,7 +27,7 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link active link-light" href="{{ 'home' }}">Beranda</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link link-light" href="resep.html">Resep</a></li>
+                    <li class="nav-item"><a class="nav-link link-light" href="{{ 'resep' }}">Resep</a></li>
                 </ul>
             </div>
         </div>

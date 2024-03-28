@@ -23,4 +23,6 @@ Route::get('home', function () {
     return view('home');
 });
 
-Route::resource('resep',resepController::class);
+Route::get('resep', function () {
+    return view('resep');
+});
