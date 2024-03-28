@@ -27,6 +27,9 @@ Route::get('resep', function () {
 Route::get('tambahresep', function () {
     return view('tambahresep');
 });
+Route::get('login', function () {
+    return view('login');
+});
 
 // Route::resource('home',resepController::class);
 // Route::resource('resep',resepController::class);

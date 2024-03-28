@@ -1,4 +1,4 @@
-@extends('template.navbar')
+@extends('template.style')
 @section('konten')
     <section class="py-4 py-xl-5" style="margin-top: -38px;">
         <div class="container py-4 py-xl-5 mb-sm-0">

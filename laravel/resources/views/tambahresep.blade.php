@@ -1,4 +1,4 @@
-@extends('template.navbar')
+@extends('template.style')
 @section('konten')
     <form action="{{ url('resep') }}" method="post">
         @csrf

@@ -1,4 +1,4 @@
-@extends('template.navbar')
+@extends('template.style')
 
 @section('konten')
     <div class="simple-slider">
