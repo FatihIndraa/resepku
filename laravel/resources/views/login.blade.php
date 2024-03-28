@@ -1,4 +1,4 @@
-@extends('template.style')
+@extends('template.loginstyle')
 
 @section('style')
 

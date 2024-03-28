@@ -21,4 +21,3 @@
     <script src="{{ asset('import/assets/js/Simple-Slider.js') }}"></script>
     <script src="{{ asset('import/assets/js/bootstrap/js/bootstrap.min.js') }}"></script>
 </body>
-@include('template.footer')
