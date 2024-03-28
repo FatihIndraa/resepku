@@ -17,8 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
-
 Route::get('home', function () {
     return view('home');
 });
@@ -26,3 +24,9 @@ Route::get('home', function () {
 Route::get('resep', function () {
     return view('resep');
 });
+Route::get('tambahresep', function () {
+    return view('tambahresep');
+});
+
+// Route::resource('home',resepController::class);
+// Route::resource('resep',resepController::class);

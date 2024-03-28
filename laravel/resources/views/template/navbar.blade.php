@@ -27,19 +27,20 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link active link-light" href="{{ 'home' }}">Beranda</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link link-light" href="{{ 'resep' }}">Resep</a></li>
+                    <li class="nav-item"><a class="nav-link link-light" href="{{ url('resep') }}">Resep</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
     @yield('konten')
-    @include('template.footer')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('import/assets/js/bs-init.js') }}"></script>
     <script src="{{ asset('import/assets/js/Simple-Slider-swiper-bundle.min.js') }}"></script>
     <script src="{{ asset('import/assets/js/Simple-Slider.js') }}"></script>
     <script src="{{ asset('import/assets/js/bootstrap/js/bootstrap.min.js') }}"></script>
 </body>
+
+@include('template.footer')
 
 </html>

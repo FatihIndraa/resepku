@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\resep;
 use Illuminate\Http\Request;
 
 class resepController extends Controller
@@ -11,7 +12,7 @@ class resepController extends Controller
      */
     public function index()
     {
-        return 'hi';
+        return view('home');
     }
 
     /**
@@ -27,7 +28,14 @@ class resepController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data=[
+            'idMakanan'=> $request->idMakanan,
+            'nama'=> $request->nama,
+            'deskripsi'=> $request->deskripsi,
+            'bahan'=> $request->bahan,
+        ];
+        resep::create($data);
+        return 'hi';
     }
 
     /**
