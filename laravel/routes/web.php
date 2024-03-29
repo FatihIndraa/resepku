@@ -19,6 +19,9 @@ use App\Http\Controllers\DashboardPostController;
 Route::get('/', function () {
     return view('home');
 });
+Route::get('/posts', function () {
+    return view('posts');
+});
 Route::get('/resep', function () {
     return view('resep');
 });
