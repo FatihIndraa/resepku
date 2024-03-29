@@ -8,10 +8,12 @@
             <div class="collapse navbar-collapse" id="navcol-2">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active link-light" href="{{ '/' }}">Beranda</a>
+                        <a class="nav-link active link-light {{ Request::is('/') ? 'active' : '' }}"
+                            href="{{ '/' }}">Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link-light" href="{{ '/resep' }}">Resep</a>
+                        <a class="nav-link link-light {{ Request::is('resep') ? 'active' : '' }}"
+                            href="{{ '/resep' }}">Resep</a>
                     </li>
                     <li class="nav-item">
                         @auth
@@ -41,11 +43,6 @@
                                             </b>
                                         </button>
                                     </form>
-                                    {{-- <a class="dropdown-item" href="#">
-                                        <b>
-                                            <i class="bi bi-box-arrow-left"></i> Logout
-                                        </b>
-                                    </a> --}}
                                 </li>
                             </ul>
                         </li>

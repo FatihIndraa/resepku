@@ -14,12 +14,14 @@
 <body>
     <div class="bg-body shadow d-flex flex-column flex-shrink-0 position-fixed top-0 bottom-0" style="width: 4.5rem;">
         <ul class="nav nav-pills flex-column text-center nav-flush mb-auto">
-            <li class="nav-item" data-bss-hover-animate="rubberBand"><a class="nav-link py-3 border-bottom rounded-0"
+            <li class="nav-item" data-bss-hover-animate="rubberBand"><a
+                    class="nav-link py-3 border-bottom rounded-0 {{ Request::is('dashboard') ? 'active' : '' }}"
                     href="/dashboard"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
                         fill="currentColor" viewBox="0 0 16 16" class="bi bi-calendar-plus">
                         <i class="bi bi-clipboard2-data"></i>
                     </svg></a></li>
-            <li class="nav-item" data-bss-hover-animate="rubberBand"><a class="nav-link py-3 border-bottom rounded-0"
+            <li class="nav-item" data-bss-hover-animate="rubberBand"><a
+                    class="nav-link py-3 border-bottom rounded-0 {{ Request::is('dashboard/posts') ? 'active' : '' }}"
                     href="/dashboard/posts"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
                         fill="currentColor" viewBox="0 0 16 16" class="bi bi-people">
                         <i class="bi bi-layout-text-sidebar-reverse"></i>
