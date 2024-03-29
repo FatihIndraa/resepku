@@ -7,6 +7,13 @@
         <section class="position-relative py-4 py-xl-5">
             <div class="container">
                 <div class="row text-light mb-5">
+
+                    @if (session()->has('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ session('success') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
                     <div class="col-md-8 col-xl-6 text-center mx-auto">
                         <h2>Log in</h2>
                         <p class="w-lg-50">Selamat Datang di ResepKu. Login untuk masuk kedalam aplikasi</p>
@@ -31,6 +38,9 @@
                                     <div class="mb-3"><button class="btn btn-primary d-block w-100"
                                             type="submit">Login</button></div>
                                     <p class="text-muted">Forgot your password?</p>
+                                    <p class="text-muted">belum punya akun?
+                                        <a href="{{ '/register' }}">daftar sekarang</a>
+                                    </p>
                                 </form>
                             </div>
                         </div>

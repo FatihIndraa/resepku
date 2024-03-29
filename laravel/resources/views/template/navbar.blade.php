@@ -1,14 +1,14 @@
 <body>
     <nav class="navbar navbar-expand-md bg-dark py-3">
-        <div class="container"><a class="navbar-brand d-flex align-items-center" href="{{ 'home' }}"><span
+        <div class="container"><a class="navbar-brand d-flex align-items-center" href="{{ '/' }}"><span
                     class="text-light">Resepku</span></a><button data-bs-toggle="collapse" data-bs-target="#navcol-2"
                 class="navbar-toggler bg-light"><span class="visually-hidden">Toggle navigation</span><span
                     class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-2">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active link-light" href="{{ 'home' }}">Beranda</a>
+                    <li class="nav-item"><a class="nav-link active link-light" href="{{ '/' }}">Beranda</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link link-light" href="{{ url('resep') }}">Resep</a></li>
+                    <li class="nav-item"><a class="nav-link link-light" href="{{ '/resep' }}">Resep</a></li>
                 </ul>
             </div>
         </div>
