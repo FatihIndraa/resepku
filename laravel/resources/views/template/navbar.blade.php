@@ -9,6 +9,12 @@
                     <li class="nav-item"><a class="nav-link active link-light" href="{{ '/' }}">Beranda</a>
                     </li>
                     <li class="nav-item"><a class="nav-link link-light" href="{{ '/resep' }}">Resep</a></li>
+                    <li class="nav-item">
+                        <a href="/login" class="nav-link active link-light">
+                            <i class="bi bi-box-arrow-in-right"></i> Login
+                            {{-- <i class="bi bi-box-arrow-left"></i>Logout --}}
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
