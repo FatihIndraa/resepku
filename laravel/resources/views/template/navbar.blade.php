@@ -18,22 +18,41 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle link-light" href="#" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                Dropdown
+                                <b> Wellcome back, {{ auth()->user()->name }}</b>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="/dashboard">
+                                        <b>
+                                            <i class="bi bi-calendar-check"></i>
+                                            My Dashboard
+                                        </b>
+                                    </a>
+                                </li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li>
+                                    <form action="/logout" method="post">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item">
+                                            <b>
+                                                <i class="bi bi-box-arrow-left"></i> Logout
+                                            </b>
+                                        </button>
+                                    </form>
+                                    {{-- <a class="dropdown-item" href="#">
+                                        <b>
+                                            <i class="bi bi-box-arrow-left"></i> Logout
+                                        </b>
+                                    </a> --}}
+                                </li>
                             </ul>
                         </li>
                     @else
                         <li class="nav-item">
                             <a href="/login" class="nav-link active link-light">
                                 <i class="bi bi-box-arrow-in-right"></i> Login
-                                {{-- <i class="bi bi-box-arrow-left"></i>Logout --}}
                             </a>
                         </li>
                     @endauth
@@ -52,4 +71,5 @@
     <script src="{{ asset('import/assets/js/Simple-Slider-swiper-bundle.min.js') }}"></script>
     <script src="{{ asset('import/assets/js/Simple-Slider.js') }}"></script>
     <script src="{{ asset('import/assets/js/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('import/assets/js/bs-init.js') }}"></script>
 </body>

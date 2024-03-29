@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ asset('import/assets/css/Testimonials-images.css') }}">
     <link rel="stylesheet" href="{{ asset('import/assets/css/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('import/assets/css/css/Simple-Slider-swiper-bundle.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('import/assets/css/Navbar-Right-Links-Dark-icons.css') }}">
     <link rel="stylesheet"
         href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css') }}">
 </head>
