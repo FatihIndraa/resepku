@@ -1,19 +1,42 @@
 <body>
     <nav class="navbar navbar-expand-md bg-dark py-3">
-        <div class="container"><a class="navbar-brand d-flex align-items-center" href="{{ '/' }}"><span
-                    class="text-light">Resepku</span></a><button data-bs-toggle="collapse" data-bs-target="#navcol-2"
-                class="navbar-toggler bg-light"><span class="visually-hidden">Toggle navigation</span><span
-                    class="navbar-toggler-icon"></span></button>
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center text-light" href="{{ '/' }}">Resepku</a>
+            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navcol-2">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navcol-2">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active link-light" href="{{ '/' }}">Beranda</a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link link-light" href="{{ '/resep' }}">Resep</a></li>
                     <li class="nav-item">
-                        <a href="/login" class="nav-link active link-light">
-                            <i class="bi bi-box-arrow-in-right"></i> Login
-                            {{-- <i class="bi bi-box-arrow-left"></i>Logout --}}
-                        </a>
+                        <a class="nav-link active link-light" href="{{ '/' }}">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link-light" href="{{ '/resep' }}">Resep</a>
+                    </li>
+                    <li class="nav-item">
+                        @auth
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle link-light" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Dropdown
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a href="/login" class="nav-link active link-light">
+                                <i class="bi bi-box-arrow-in-right"></i> Login
+                                {{-- <i class="bi bi-box-arrow-left"></i>Logout --}}
+                            </a>
+                        </li>
+                    @endauth
                     </li>
                 </ul>
             </div>
@@ -21,6 +44,9 @@
     </nav>
 
     @yield('konten')
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('import/assets/js/bs-init.js') }}"></script>
     <script src="{{ asset('import/assets/js/Simple-Slider-swiper-bundle.min.js') }}"></script>
