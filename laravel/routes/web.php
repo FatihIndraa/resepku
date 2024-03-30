@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardPostController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,11 +18,13 @@ use App\Http\Controllers\DashboardPostController;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('home',[
+        'title'=>'home',
+    ]);
 });
-Route::get('/posts', function () {
-    return view('posts');
-});
+// Route::get('/posts', function () {
+//     return view('posts');
+// });
 Route::get('/resep', function () {
     return view('resep');
 });
@@ -36,8 +39,13 @@ Route::post('/logout', [LoginController::class,'logout']);
 Route::get('/register', [RegisterController::class,'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class,'store']);
 
+Route::get('/dashboard/posts/{post:slug}', [DashboardPostController::class, 'show'])->name('dashboard.posts.show');
+
+
+
 Route::get('/dashboard',function(){
     return view("dashboard.index");
 })->middleware('auth');
 
 Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
+// Route::get('/posts/{post:slug}', [PostController::class, 'show']);

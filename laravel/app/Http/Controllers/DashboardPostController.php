@@ -16,7 +16,7 @@ class DashboardPostController extends Controller
         return view("dashboard.posts.index",[
             'posts'=> Post::where('user_id', auth()->user()->id)->get()
         ]);
-    } //belum selesai
+    } 
 
     /**
      * Show the form for creating a new resource.
@@ -39,7 +39,7 @@ class DashboardPostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('dashboard.posts.show', ['post' => $post]);
     }
 
     /**
@@ -65,7 +65,9 @@ class DashboardPostController extends Controller
     {
         //
     }
+    
 }
 
+    
 
         // return Post::where("user_id", auth()->user()->id)->get();
