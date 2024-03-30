@@ -22,14 +22,9 @@ use App\Http\Controllers\PostController;
 //         'title'=>'home',
 //     ]);
 // });
-// Route::get('/posts', function () {
-//     return view('posts');
-// });
+
 Route::get('/resep', function () {
     return view('resep');
-});
-Route::get('/tembahresep', function () {
-    return view('tambahresep');
 });
 
 Route::get('/login', [LoginController::class,'index'])->name('login')->middleware('guest');
@@ -44,15 +39,14 @@ Route::get('/post/{post}', [PostController::class, 'show'])->name('post');
 Route::get('/detail/{category}', [PostController::class, 'indexByCategory'])->name('detail');
 
 
-Route::get('/dashboard/posts/{post:slug}', [DashboardPostController::class, 'show'])->name('dashboard.posts.show');
-
-// delete post
-Route::delete('/dashboard/posts/{post}', [DashboardPostController::class, 'destroy'])->name('dashboard.posts.destroy');
-
-
+// authentikasi folder dashboard
 Route::get('/dashboard',function(){
     return view("dashboard.index");
 })->middleware('auth');
-
+// authentifikasi posts
+Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class,'checkSlug'])->middleware('auth');
 Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
-// Route::get('/posts/{post:slug}', [PostController::class, 'show']);
+
+// dashboard post setelah di authentifikasi
+Route::get('/dashboard/posts/{post:slug}', [DashboardPostController::class, 'show'])->name('dashboard.posts.show');
+Route::get('/dashboard/posts/create', [DashboardPostController::class, 'create'])->name('dashboard.posts.create');

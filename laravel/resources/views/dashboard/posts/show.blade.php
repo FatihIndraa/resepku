@@ -12,4 +12,5 @@
                     {!! $post->body !!}
                 </div>
         </section>
-    @endsection
+    </div>
+@endsection

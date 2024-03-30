@@ -12,11 +12,14 @@
             </div>
         </div>
     </section>
-
-
-    <div class="conteiner">
+    @if (session()->has('success'))
+        <div class="alert alert-success" role="alert">
+            {{ session('success') }}
+        </div>
+    @endif
+    <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-15">
                 <div class="table-responsive">
                     <table class="table">
                         <thead class="table-dark">

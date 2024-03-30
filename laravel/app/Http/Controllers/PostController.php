@@ -24,6 +24,12 @@ class PostController extends Controller
             "post" => $post
         ]);
     }
+
+    public function create()
+    {
+        //
+    }
+
     public function indexByCategory($category)
     {
         // Anggap Anda memiliki model Category dengan atribut slug
