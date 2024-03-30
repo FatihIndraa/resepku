@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Category;
 
 class PostController extends Controller
 {
@@ -21,6 +22,18 @@ class PostController extends Controller
         return view('post', [
             "title" => "Single Post",
             "post" => $post
+        ]);
+    }
+    public function indexByCategory($category)
+    {
+        // Anggap Anda memiliki model Category dengan atribut slug
+        $category = Category::where('slug', $category)->firstOrFail();
+        
+        $posts = Post::where('category_id', $category->id)->latest()->get();
+
+        return view('detail', [
+            'posts' => $posts,
+            'category' => $category,
         ]);
     }
 }

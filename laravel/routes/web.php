@@ -40,6 +40,8 @@ Route::get('/register', [RegisterController::class,'index'])->middleware('guest'
 Route::post('/register', [RegisterController::class,'store']);
 
 Route::get('/', [PostController::class, 'index'])->name('home');
+Route::get('/post/{post}', [PostController::class, 'show'])->name('post');
+Route::get('/detail/{category}', [PostController::class, 'indexByCategory'])->name('detail');
 
 
 Route::get('/dashboard/posts/{post:slug}', [DashboardPostController::class, 'show'])->name('dashboard.posts.show');
