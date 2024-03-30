@@ -4,10 +4,9 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use APP\Models\User;
-use APP\Models\Post;
-use APP\Models\Category;
-
+use App\Models\User;
+use App\Models\Post;
+use App\Models\Category;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -15,17 +14,80 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::create([
-            'name'=>'Fatih Indra',
-            'email'=>'fatihindra140903@gmail.com',
-            'password'=>bcrypt('12345'),
-        ]);
-
+        User::factory(5)->create();
         // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        Post::create([
+            'title'=>'judul pertama',
+            'slug'=> 'pertama',
+            'excerpt'=>'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere animi mollitia
+            aperiam delectus obcaecati! Suscipit',
+            'body'=> 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere animi mollitia
+            aperiam delectus obcaecati! Suscipit, doloremque incidunt enim non voluptas
+            mollitia quod officia similique modi natus corporis cum. Magni sed, sequi
+            molestiae deleniti ipsum sapiente incidunt facilis nobis corrupti sit odio
+            voluptas porro corporis eligendi ad unde fugiat esse dolores fuga eius, quisquam
+            voluptates! Alias sed dolore consectetur voluptatem provident nisi mollitia
+            excepturi exercitationem tenetur nulla. Dolorum quasi vel pariatur porro? Ullam,
+            assumenda ab blanditiis consectetur labore laudantium non molestias quae ipsum
+            temporibus veniam adipisci ratione quidem, debitis accusantium quos perferendis!
+            Dolor facilis dicta mollitia veniam natus nemo a aut?',
+            'category_id'=>'1',
+            'user_id'=>'1'
+            
+        ]);
+
+        Post::create([
+            'title'=>'judul kedua',
+            'slug'=> 'kedua',
+            'excerpt'=>'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere animi mollitia
+            aperiam delectus obcaecati! Suscipit',
+            'body'=> 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere animi mollitia
+            aperiam delectus obcaecati! Suscipit, doloremque incidunt enim non voluptas
+            mollitia quod officia similique modi natus corporis cum. Magni sed, sequi
+            molestiae deleniti ipsum sapiente incidunt facilis nobis corrupti sit odio
+            voluptas porro corporis eligendi ad unde fugiat esse dolores fuga eius, quisquam
+            voluptates! Alias sed dolore consectetur voluptatem provident nisi mollitia
+            excepturi exercitationem tenetur nulla. Dolorum quasi vel pariatur porro? Ullam,
+            assumenda ab blanditiis consectetur labore laudantium non molestias quae ipsum
+            temporibus veniam adipisci ratione quidem, debitis accusantium quos perferendis!
+            Dolor facilis dicta mollitia veniam natus nemo a aut?',
+            'category_id'=>'1',
+            'user_id'=>'2'
+            
+        ]);
+
+        Post::create([
+            'title'=>'judul ketiga',
+            'slug'=> 'ketiga',
+            'excerpt'=>'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere animi mollitia
+            aperiam delectus obcaecati! Suscipit',
+            'body'=> 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere animi mollitia
+            aperiam delectus obcaecati! Suscipit, doloremque incidunt enim non voluptas
+            mollitia quod officia similique modi natus corporis cum. Magni sed, sequi
+            molestiae deleniti ipsum sapiente incidunt facilis nobis corrupti sit odio
+            voluptas porro corporis eligendi ad unde fugiat esse dolores fuga eius, quisquam
+            voluptates! Alias sed dolore consectetur voluptatem provident nisi mollitia
+            excepturi exercitationem tenetur nulla. Dolorum quasi vel pariatur porro? Ullam,
+            assumenda ab blanditiis consectetur labore laudantium non molestias quae ipsum
+            temporibus veniam adipisci ratione quidem, debitis accusantium quos perferendis!
+            Dolor facilis dicta mollitia veniam natus nemo a aut?',
+            'category_id'=>'2',
+            'user_id'=>'1'
+            
+        ]);
+
+        Category::create([
+            'name'=>'makanan',
+            'slug'=> 'makanan',
+        ]);
+        Category::create([
+            'name'=>'minuman',
+            'slug'=> 'minuman',
+        ]);
+        Category::create([
+            'name'=>'camilan',
+            'slug'=> 'camilan',
+        ]);
     }
 }
