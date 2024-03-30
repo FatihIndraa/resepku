@@ -49,19 +49,31 @@
                 </div>
             @endauth
             @if ($posts->count())
-                @foreach ($posts as $post)
-                    <div class="card mb-3">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $post->title }}</h5>
-                            <p class="card-text">{{ $post->excerpt }}</p>
-                            <p>By.</p>
-                            <p class="card-text"><small class="text-muted">Last updated
-                                    {{ $post->updated_at->diffForHumans() }}</small></p>
-                            <a href="{{ route('post', $post) }}" class="btn btn-primary">Read more</a>
-                        </div>
+                <div class="container">
+                    <div class="row">
+                        @foreach ($posts as $post)
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <img src="..." class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $post->title }}</h5>
+                                        <p>
+                                            <small class="text-muted">
+                                                By: {{ $post->user->name }}
+                                                {{ $post->updated_at->diffForHumans() }}
+                                            </small>
+                                        </p>
+                                        <p>Category: <a
+                                                href="{{ route('detail', $post->category->slug) }}">{{ $post->category->name }}</a>
+                                        </p>
+                                        <p class="card-text">{{ $post->excerpt }}</p>
+                                        <a href="{{ route('post', $post) }}" class="btn btn-primary">Lihat Selengkapnya</a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
-                @endforeach
+                </div>
             @else
                 <p class="text-center fs-4">No Post Found</p>
             @endif

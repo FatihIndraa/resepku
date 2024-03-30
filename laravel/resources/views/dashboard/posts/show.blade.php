@@ -2,8 +2,14 @@
 
 @section('isidbs')
     <div class="container">
-        <h2>{{ $post->title }}</h2>
-        <p>{{ $post->body }}</p>
-        <!-- Tambahkan bagian lain dari postingan yang ingin Anda tampilkan -->
-    </div>
-@endsection
+        <section class="py-4 py-xl-5">
+            <div class="container">
+                <div class="mb-3">
+                    <h1 class="mb-5">{{ $post->title }}</h1>
+
+                    <p>Author: {{ $post->user->name }}</p>
+                    <p>Category: <a href="{{ route('detail', $post->category->slug) }}">{{ $post->category->name }}</a></p>
+                    {!! $post->body !!}
+                </div>
+        </section>
+    @endsection
