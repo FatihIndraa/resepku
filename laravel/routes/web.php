@@ -17,11 +17,11 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/', function () {
-    return view('home',[
-        'title'=>'home',
-    ]);
-});
+// Route::get('/', function () {
+//     return view('home',[
+//         'title'=>'home',
+//     ]);
+// });
 // Route::get('/posts', function () {
 //     return view('posts');
 // });
@@ -39,8 +39,13 @@ Route::post('/logout', [LoginController::class,'logout']);
 Route::get('/register', [RegisterController::class,'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class,'store']);
 
+Route::get('/', [PostController::class, 'index'])->name('home');
+
+
 Route::get('/dashboard/posts/{post:slug}', [DashboardPostController::class, 'show'])->name('dashboard.posts.show');
 
+// delete post
+Route::delete('/dashboard/posts/{post}', [DashboardPostController::class, 'destroy'])->name('dashboard.posts.destroy');
 
 
 Route::get('/dashboard',function(){

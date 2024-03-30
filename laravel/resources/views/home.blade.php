@@ -22,100 +22,48 @@
     <section class="py-4 py-xl-5">
         <div class="container">
             <div class="text-white bg-dark border-0 border rounded p-4 p-md-5 mb-xxl-4">
-                <h2 class="fw-bold text-white mb-3">Selamat Datang, User</h2>
-                <p class="mb-4">Mau masak makanan apa hari ini? yuk coba lihat berbagai resep yang telah kamu buat</p>
-            </div>
-        </div>
-        <div class="container py-4 py-xl-5">
-            <div class="row mb-5" style="padding-bottom:0px;font-size:20px;">
-                <div class="col-md-8 col-xl-6 col-xxl-5 text-center mx-auto">
-                    <h2>Menu</h2>
-                    <p class="w-lg-50"> Berikut adalah berbagai macam resep menu makanan yang ada pada Resepku</p>
+                @auth()
+                    <h2 class="fw-bold text-white mb-3">Selamat Datang, {{ auth()->user()->name }}</h2>
+                    <p class="mb-4">Mau masak makanan apa hari ini? yuk coba lihat berbagai macam resep yang ada </p>
                 </div>
             </div>
-            <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3" style="margin-bottom:19px;margin-top:0px;">
-                <div class="col">
-                    <div class="card"><img class="card-img-top w-100 d-block card-img-top w-100 fit-cover"
-                            style="height:400px;"
-                            src="{{ asset('import/assets/img/01a8b20022d3ac8d1c0ad960e7b67466.jpg') }}" width="414"
-                            height="200">
-                        <div class="card-body p-4">
-                            <h4 class="card-title">Burger</h4>
-                            <p class="card-text"><span style="color:rgb(17, 17, 17);">Sejenis roti berbentuk bundar yang
-                                    diiris dua, dan di tengahnya diisi dengan patty yang biasanya diambil dari daging,
-                                    kemudian sayur-sayuran berupa selada, tomat dan bawang bombai</span></p><a
-                                href="detailResep.html">More Info</a>
-                        </div>
+            <div class="container py-4 py-xl-5">
+                <div class="row mb-5" style="padding-bottom:0px;font-size:20px;">
+                    <div class="col-md-8 col-xl-6 col-xxl-5 text-center mx-auto">
+                        <h2>Menu</h2>
+                        <p class="w-lg-50"> Berikut adalah berbagai macam resep menu makanan yang ada pada Resepku</p>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="card"><img class="card-img-top w-100 d-block card-img-top w-100 fit-cover"
-                            style="height:400px;"
-                            src="{{ asset('import/assets/img/01a8b20022d3ac8d1c0ad960e7b67466.jpg') }}" width="414"
-                            height="200">
-                        <div class="card-body p-4">
-                            <h4 class="card-title">Lorem libero donec</h4>
-                            <p class="card-text"> Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo
-                                odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at
-                                eget metus. </p><a href="#">More Info</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card"><img class="card-img-top w-100 d-block card-img-top w-100 fit-cover"
-                            style="height:400px;"
-                            src="{{ asset('import/assets/img/01a8b20022d3ac8d1c0ad960e7b67466.jpg') }}" width="414"
-                            height="200">
-                        <div class="card-body p-4">
-                            <h4 class="card-title">Lorem libero donec</h4>
-                            <p class="card-text"> Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo
-                                odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at
-                                eget metus. </p><a href="#">More Info</a>
-                        </div>
-                    </div>
-                </div>
+            @else
+                <h2 class="fw-bold text-white mb-3">Selamat Datang di Resepku</h2>
+                <p class="mb-4">Mau masak makanan apa hari ini? yuk coba lihat berbagai macam resep yang ada </p>
+                <a href="/login" class="btn btn-primary text-decoration-none">Login dulu yuk</a>
             </div>
-            <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3" style="margin-top:19px;margin-bottom:19px;">
-                <div class="col">
-                    <div class="card"><img class="card-img-top w-100 d-block card-img-top w-100 fit-cover"
-                            style="height:400px;"
-                            src="{{ asset('import/assets/img/01a8b20022d3ac8d1c0ad960e7b67466.jpg') }}" width="414"
-                            height="200">
-                        <div class="card-body p-4">
-                            <h4 class="card-title">Lorem libero donec</h4>
-                            <p class="card-text"> Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo
-                                odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at
-                                eget metus. </p><a href="#">More Info</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card"><img class="card-img-top w-100 d-block card-img-top w-100 fit-cover"
-                            style="height:400px;"
-                            src="{{ asset('import/assets/img/01a8b20022d3ac8d1c0ad960e7b67466.jpg') }}" width="414"
-                            height="200">
-                        <div class="card-body p-4">
-                            <h4 class="card-title">Lorem libero donec</h4>
-                            <p class="card-text"> Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo
-                                odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at
-                                eget metus. </p><a href="#">More Info</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card"><img class="card-img-top w-100 d-block card-img-top w-100 fit-cover"
-                            style="height:400px;"
-                            src="{{ asset('import/assets/img/01a8b20022d3ac8d1c0ad960e7b67466.jpg') }}" width="414"
-                            height="200">
-                        <div class="card-body p-4">
-                            <h4 class="card-title">Lorem libero donec</h4>
-                            <p class="card-text"> Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo
-                                odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at
-                                eget metus. </p><a href="#">More Info</a>
-                        </div>
-                    </div>
-                </div>
             </div>
+            <div class="container py-4 py-xl-5">
+                <div class="row mb-5" style="padding-bottom:0px;font-size:20px;">
+                    <div class="col-md-8 col-xl-6 col-xxl-5 text-center mx-auto">
+                        <h2>Menu</h2>
+                        <p class="w-lg-50"> Berikut adalah berbagai macam resep menu makanan yang ada pada Resepku</p>
+                    </div>
+                </div>
+            @endauth
+            @if ($posts->count())
+                @foreach ($posts as $post)
+                    <div class="card mb-3">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $post->title }}</h5>
+                            <p class="card-text">{{ $post->excerpt }}</p>
+                            <p class="card-text"><small class="text-muted">Last updated
+                                    {{ $post->updated_at->diffForHumans() }}</small></p>
+                            <a href="{{ route('posts.show', $post) }}" class="btn btn-primary">Read more</a>
+                        </div>
+                    </div>
+                @endforeach
+            @else
+                <p class="text-center fs-4">No Post Found</p>
+            @endif
         </div>
     </section>
 @endsection
