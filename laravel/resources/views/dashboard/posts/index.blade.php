@@ -12,14 +12,14 @@
             </div>
         </div>
     </section>
-    @if (session()->has('success'))
-        <div class="alert alert-success" role="alert">
-            {{ session('success') }}
-        </div>
-    @endif
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-15">
+                @if (session()->has('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('success') }}
+                    </div>
+                @endif
                 <div class="table-responsive">
                     <table class="table">
                         <thead class="table-dark">
@@ -43,18 +43,20 @@
                                             data-toggle="tooltip" data-placement="bottom" title="Lihat Postingan"><i
                                                 class="bi bi-eye"></i>
                                         </a>
-                                        <a href="/dashboard/posts/{{ $post->id }}"
+                                        <a href="/dashboard/posts/{{ $post->slug }}/edit"
                                             class="badge bg-warning icon-link icon-link-hover"
                                             style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);"
                                             data-toggle="tooltip" data-placement="bottom" title="Edit Postingan"><i
                                                 class="bi bi-pencil-square"></i>
                                         </a>
-                                        <a href="/dashboard/posts/{{ $post->id }}"
-                                            class="badge bg-danger icon-link icon-link-hover"
-                                            style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);"
-                                            data-toggle="tooltip" data-placement="bottom" title="Hapus Postingan"><i
+                                        <form action="/dashboard/posts/{{$post->slug}}" method="post" class="d-inline">
+                                            @method('delete')
+                                            @csrf
+                                            <button class="badge bg-danger border-0 icon-link icon-link-hover"style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);"
+                                            data-toggle="tooltip" data-placement="bottom" title="Hapus Postingan" onclick="return confirm('yakin untuk hapus data??')"><i
                                                 class="bi bi-x-circle"></i>
-                                        </a>
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

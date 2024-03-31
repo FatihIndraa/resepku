@@ -34,10 +34,13 @@
                 <div class="container">
                     <div class="row">
                         @foreach ($posts as $post)
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <img src="..." class="card-img-top" alt="...">
-                                    <div class="card-body">
+                            <div class="col-md-4 mb-3">
+                                <div class="card h-100"> <!-- Menambahkan class h-100 untuk menetapkan tinggi card -->
+                                    <img src="https://source.unsplash.com/1200x600/?{{ $post->category->name }}"
+                                        class="card-img-top" style="height: 300px; object-fit: cover;" alt="...">
+                                    <!-- Menetapkan tinggi tetap untuk gambar -->
+                                    <div class="card-body d-flex flex-column">
+                                        <!-- Menambahkan class d-flex dan flex-column untuk isi card -->
                                         <h5 class="card-title">{{ $post->title }}</h5>
                                         <p>
                                             <small class="text-muted">
@@ -45,8 +48,16 @@
                                                 {{ $post->updated_at->diffForHumans() }}
                                             </small>
                                         </p>
-                                        <p class="card-text">{{ $post->excerpt }}</p>
-                                        <a href="{{ route('post', $post) }}" class="btn btn-primary">Lihat Selengkapnya</a>
+                                        <p>Category: <a
+                                                href="{{ route('detail', $post->category->slug) }}">{{ $post->category->name }}</a>
+                                        </p>
+                                        <div class="flex-grow-1">
+                                            <!-- Menggunakan class flex-grow-1 untuk membuat deskripsi post memanjang -->
+                                            <p class="card-text">{{ $post->excerpt }}</p>
+                                        </div>
+                                        <a href="{{ route('post', $post) }}" class="btn btn-primary mt-auto">Lihat
+                                            Selengkapnya</a>
+                                        <!-- Menggunakan class mt-auto untuk menjaga tombol tetap di bagian bawah card -->
                                     </div>
                                 </div>
                             </div>

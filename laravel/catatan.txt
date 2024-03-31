@@ -1,0 +1,29 @@
+revisi 
+tampilan /dashboard/posts/index.blade
+    - rapi notifikasi
+    - edit postingan
+tampilan /dashboard/posts/show
+    - title ganti
+    - tambah button
+    - jalankan fungs hapus
+    - jalankan fungs edit
+tampilan /dashboard/posts/create
+    -fix slug old
+    - tambah upload gambar
+dashboard/posts/index
+    - jalankan fungsi hapus data
+tampillan post
+    - ganti title 
+tampilan home
+    - tambah margin bottom card
+
+dashboardpostcontroller
+update env file_disc
+
+tambahkan di terminal 
+php artisan storage:link ->untuk menambahkan storege ke folder public
+php artisan make:factory PostFactory
+
+database/factory
+
+databaseSeeder update

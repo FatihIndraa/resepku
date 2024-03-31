@@ -17,7 +17,7 @@
         <section class="py-4 py-xl-5">
             <div class="container">
                 <div class="mb-3">
-                    <form method="post" action="/dashboard/posts">
+                    <form method="post" action="/dashboard/posts" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
                             <label for="title" class="form-label">Title</label>
@@ -33,7 +33,16 @@
                         </div>
                         <div class="mb-3">
                             <label for="slug" class="form-label">Slug</label>
-                            <input type="text" class="form-control" id="slug" name="slug">
+                            <input type="text"
+                                   class="form-control @error('slug') is-invalid @enderror"
+                                   id="slug"
+                                   name="slug"
+                                   value="{{ old('slug') }}">
+                            @error('slug')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="category" class="form-label">Category</label>
@@ -47,16 +56,26 @@
                                 @endforeach
                             </select>
                         </div>
+                        {{-- gambar --}}
+                        <div class="mb-3">
+                            <label for="image" class="form-label @error('image') is-invalid @enderror">Gambar postingan</label>
+                            <input class="form-control" type="file" id="image" name="image">
+                          </div>
+                          @error('image')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        {{-- body --}}
                         <div class="mb-3">
                             <label for="body" class="form-label">Body</label>
-                            <input id="body" type="hidden" name="body">
+                            <input id="body" type="hidden" name="body" value="{{ old('body') }}">
                             <trix-editor input="body"></trix-editor>
                             @error('body')
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
-
                         </div>
-                        <button type="submit" class="btn btn-primary">Create Post</button>
+                        <button type="submit" class="btn btn-primary">Unggah Postingan</button>
                     </form>
                 </div>
         </section>

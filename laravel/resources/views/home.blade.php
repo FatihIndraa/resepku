@@ -4,15 +4,11 @@
     <div class="simple-slider">
         <div class="swiper-container me-xxl-0 pe-xxl-0 mb-xxl-0 pb-xxl-0">
             <div class="swiper-wrapper mb-0 pb-0" style="padding-left:0px;margin-bottom:0px;padding-bottom:87px;">
-                <div class="swiper-slide"
-                    style="background: url(&quot;{{ asset('import/assets/img/2149209253.jpg') }}&quot;) top / cover no-repeat;padding-bottom: 0px;margin-bottom: 0px;">
-                </div>
-                <div class="swiper-slide"
-                    style="background: url(&quot;{{ asset('import/assets/img/101175.jpg') }}&quot;) center center / cover no-repeat;">
-                </div>
-                <div class="swiper-slide"
-                    style="background: url(&quot;{{ asset('import/assets/img/front-view-tasty-meat-soup-consists-potatoes-meat-beans-dark-table.jpg') }}&quot;) center center / cover no-repeat;">
-                </div>
+                @for ($i = 0; $i < 3; $i++)
+                    <div class="swiper-slide"
+                        style="background: url('https://source.unsplash.com/1200x600/?food&{{ $i }}') top / cover no-repeat;padding-bottom: 0px;margin-bottom: 0px;">
+                    </div>
+                @endfor
             </div>
             <div class="swiper-pagination"></div>
             <div class="swiper-button-prev"></div>
@@ -52,10 +48,13 @@
                 <div class="container">
                     <div class="row">
                         @foreach ($posts as $post)
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <img src="..." class="card-img-top" alt="...">
-                                    <div class="card-body">
+                            <div class="col-md-4 mb-3">
+                                <div class="card h-100"> <!-- Menambahkan class h-100 untuk menetapkan tinggi card -->
+                                    <img src="https://source.unsplash.com/1200x600/?{{ $post->category->name }}"
+                                        class="card-img-top" style="height: 300px; object-fit: cover;" alt="...">
+                                    <!-- Menetapkan tinggi tetap untuk gambar -->
+                                    <div class="card-body d-flex flex-column">
+                                        <!-- Menambahkan class d-flex dan flex-column untuk isi card -->
                                         <h5 class="card-title">{{ $post->title }}</h5>
                                         <p>
                                             <small class="text-muted">
@@ -66,8 +65,13 @@
                                         <p>Category: <a
                                                 href="{{ route('detail', $post->category->slug) }}">{{ $post->category->name }}</a>
                                         </p>
-                                        <p class="card-text">{{ $post->excerpt }}</p>
-                                        <a href="{{ route('post', $post) }}" class="btn btn-primary">Lihat Selengkapnya</a>
+                                        <div class="flex-grow-1">
+                                            <!-- Menggunakan class flex-grow-1 untuk membuat deskripsi post memanjang -->
+                                            <p class="card-text">{{ $post->excerpt }}</p>
+                                        </div>
+                                        <a href="{{ route('post', $post) }}" class="btn btn-primary mt-auto">Lihat
+                                            Selengkapnya</a>
+                                        <!-- Menggunakan class mt-auto untuk menjaga tombol tetap di bagian bawah card -->
                                     </div>
                                 </div>
                             </div>
@@ -77,6 +81,7 @@
             @else
                 <p class="text-center fs-4">No Post Found</p>
             @endif
+
         </div>
     </section>
 @endsection
