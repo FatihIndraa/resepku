@@ -81,7 +81,7 @@
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </div>
-                        <button type="submit" class="btn btn-primary">Create Post</button>
+                        <button type="submit" class="btn btn-primary">Update Post</button>
                     </form>
                 </div>
         </section>
