@@ -36,8 +36,15 @@
                         @foreach ($posts as $post)
                             <div class="col-md-4 mb-3">
                                 <div class="card h-100"> <!-- Menambahkan class h-100 untuk menetapkan tinggi card -->
-                                    <img src="https://source.unsplash.com/1200x600/?{{ $post->category->name }}"
-                                        class="card-img-top" style="height: 300px; object-fit: cover;" alt="...">
+                                    @if ($post->image)
+                                        <!-- Menambahkan class img-fluid untuk membuat gambar responsif -->
+                                        <img src="{{ asset('storage/' . $post->image) }}" class="card-img-top"
+                                            style="height: 300px; object-fit: cover;" alt="...">
+                                    @else
+                                        <!-- Menambahkan class img-fluid untuk membuat gambar responsif -->
+                                        <img src="https://source.unsplash.com/1200x600/?{{ $post->category->name }}"
+                                            class="card-img-top" style="height: 300px; object-fit: cover;" alt="...">
+                                    @endif
                                     <!-- Menetapkan tinggi tetap untuk gambar -->
                                     <div class="card-body d-flex flex-column">
                                         <!-- Menambahkan class d-flex dan flex-column untuk isi card -->

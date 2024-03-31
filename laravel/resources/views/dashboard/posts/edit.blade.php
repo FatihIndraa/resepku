@@ -6,8 +6,7 @@
             <div
                 class="text-white bg-dark border rounded border-0 border-light d-flex flex-column justify-content-between align-items-center flex-lg-row p-4 p-lg-5 ps-xxl-5 mx-xxl-5 ms-xl-5 ms-xxl-5 mb-xxl-0">
                 <div class="text-center text-lg-start py-3 py-lg-1">
-                    <h2 class="fw-bold mb-2">edit post</h2>
-                    <p class="mb-0">mau masak apa hari ini??</p>
+                    <h2 class="fw-bold mb-2">Edit Postingan</h2>
                 </div>
             </div>
         </div>
@@ -17,7 +16,7 @@
         <section class="py-4 py-xl-5">
             <div class="container">
                 <div class="mb-3">
-                    <form method="post" action="/dashboard/posts/{{$post->slug}}">
+                    <form method="post" action="/dashboard/posts/{{ $post->slug }}" enctype="multipart/form-data">
                         @method('put')
                         @csrf
                         <div class="mb-3">
@@ -34,11 +33,8 @@
                         </div>
                         <div class="mb-3">
                             <label for="slug" class="form-label">Slug</label>
-                            <input type="text"
-                                   class="form-control @error('slug') is-invalid @enderror"
-                                   id="slug"
-                                   name="slug"
-                                   value="{{ old('slug', $post->slug) }}">
+                            <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug"
+                                name="slug" value="{{ old('slug', $post->slug) }}">
                             @error('slug')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -57,6 +53,26 @@
                                 @endforeach
                             </select>
                         </div>
+
+                        {{-- gambar --}}
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Gambar postingan</label>
+                            <input type="hidden" name="oldImage" value="{{ $post->image }}">
+                            @if ($post->image)
+                                <img src="{{ asset('storage/' . $post->image) }}"
+                                    class="img-preview img-fluid mb-3 col-sm-5 d-block">
+                            @else
+                                <img class="img-preview img-fluid mb-3 col-sm-5" style="display: none;">
+                            @endif
+                            <input class="form-control @error('image') is-invalid @enderror" type="file" id="image"
+                                name="image" onchange="previewImage()">
+                            @error('image')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
                         <div class="mb-3">
                             <label for="body" class="form-label">Body</label>
                             <input id="body" type="hidden" name="body" value="{{ old('body', $post->body) }}">
@@ -80,5 +96,19 @@
                 .then(data => slug.value = data.slug)
                 .catch(error => console.error('Error:', error));
         });
+
+        function previewImage() {
+            const image = document.querySelector('#image');
+            const imgPreview = document.querySelector('.img-preview');
+
+            imgPreview.style.display = 'block';
+
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(image.files[0]);
+
+            oFReader.onload = function(oFREvent) {
+                imgPreview.src = oFREvent.target.result;
+            }
+        };
     </script>
 @endsection

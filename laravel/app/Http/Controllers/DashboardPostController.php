@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class DashboardPostController extends Controller
@@ -84,24 +85,38 @@ class DashboardPostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $rules =[
-            'title'=>'required|max:255',
-            'category_id'=>'required',
-            'body'=>'required'
+        $rules = [
+            'title' => 'required|max:255',
+            'category_id' => 'required',
+            'image' => 'image|file|max:10024',
+            'body' => 'required'
         ];
-
-       if($request->slug != $post->slug){
+    
+        if ($request->slug != $post->slug) {
             $rules['slug'] = 'required|unique:posts';
         }
-
+    
         $validatedData = $request->validate($rules);
-
+    
+        // Cek apakah ada file gambar baru yang diunggah
+        if ($request->hasFile('image')) {
+            // Simpan file gambar baru
+            $imagePath = $request->file('image')->store('public/images');
+            $validatedData['image'] = $imagePath;
+    
+            // Hapus file gambar lama jika ada
+            if ($post->image) {
+                Storage::delete($post->image);
+            }
+        }
+    
         $validatedData['user_id'] = auth()->user()->id;
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
-
-        Post::where('id', $post->id)
-                    ->update($validatedData);
-        return redirect('/dashboard/posts')->with('success', 'Selamat Postingan Telah diperbarui!!');
+    
+        // Update postingan dengan data yang telah divalidasi
+        $post->update($validatedData);
+    
+        return redirect('/dashboard/posts')->with('success', 'Postingan berhasil diperbarui!');
     }
 
     /**
