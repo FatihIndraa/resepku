@@ -15,54 +15,59 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-15">
-                @if (session()->has('success'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('success') }}
-                    </div>
-                @endif
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead class="table-dark">
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Title</th>
-                                <th scope="col">Category</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($posts as $post)
+                <a class="btn btn-primary mb-3" href="/dashboard/posts/create"><i class="bi bi-upload"></i> New Post</a>
+                <div class="dropdown-divider"></div><a class="dropdown-item" href="#">
+                    @if (session()->has('success'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="table-dark">
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $post->title }}</td>
-                                    <td>{{ $post->user->name }}</td>
-                                    <td>
-                                        <a href="/dashboard/posts/{{ $post->slug }}"
-                                            class="badge bg-info icon-link icon-link-hover"
-                                            style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);"
-                                            data-toggle="tooltip" data-placement="bottom" title="Lihat Postingan"><i
-                                                class="bi bi-eye"></i>
-                                        </a>
-                                        <a href="/dashboard/posts/{{ $post->slug }}/edit"
-                                            class="badge bg-warning icon-link icon-link-hover"
-                                            style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);"
-                                            data-toggle="tooltip" data-placement="bottom" title="Edit Postingan"><i
-                                                class="bi bi-pencil-square"></i>
-                                        </a>
-                                        <form action="/dashboard/posts/{{$post->slug}}" method="post" class="d-inline">
-                                            @method('delete')
-                                            @csrf
-                                            <button class="badge bg-danger border-0 icon-link icon-link-hover"style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);"
-                                            data-toggle="tooltip" data-placement="bottom" title="Hapus Postingan" onclick="return confirm('yakin untuk hapus data??')"><i
-                                                class="bi bi-x-circle"></i>
-                                            </button>
-                                        </form>
-                                    </td>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Category</th>
+                                    <th scope="col">Action</th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                            </thead>
+                            <tbody>
+                                @foreach ($posts as $post)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $post->title }}</td>
+                                        <td>{{ $post->user->name }}</td>
+                                        <td>
+                                            <a href="/dashboard/posts/{{ $post->slug }}"
+                                                class="badge bg-info icon-link icon-link-hover"
+                                                style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);"
+                                                data-toggle="tooltip" data-placement="bottom" title="Lihat Postingan"><i
+                                                    class="bi bi-eye"></i>
+                                            </a>
+                                            <a href="/dashboard/posts/{{ $post->slug }}/edit"
+                                                class="badge bg-warning icon-link icon-link-hover"
+                                                style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);"
+                                                data-toggle="tooltip" data-placement="bottom" title="Edit Postingan"><i
+                                                    class="bi bi-pencil-square"></i>
+                                            </a>
+                                            <form action="/dashboard/posts/{{ $post->slug }}" method="post"
+                                                class="d-inline">
+                                                @method('delete')
+                                                @csrf
+                                                <button
+                                                    class="badge bg-danger border-0 icon-link icon-link-hover"style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);"
+                                                    data-toggle="tooltip" data-placement="bottom" title="Hapus Postingan"
+                                                    onclick="return confirm('yakin untuk hapus data??')"><i
+                                                        class="bi bi-x-circle"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
             </div>
         </div>
     </div>

@@ -38,18 +38,16 @@
                         viewBox="0 0 16 16" class="bi bi-people">
                         <i class="bi bi-layout-text-sidebar-reverse"></i>
                     </svg></a></li>
+            <li class="nav-item" data-bss-hover-animate="rubberBand"><a
+                    class="nav-link py-3 border-bottom rounded-0 {{ Request::is('dashboard/') ? 'active' : '' }}"
+                    href="/dashboard/posts" data-toggle="tooltip" data-placement="bottom" title="Logout"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
+                        viewBox="0 0 16 16" class="bi bi-people">
+                        <i class="bi bi-box-arrow-right"></i>
+                    </svg></a></li>
 
         </ul>
-        <div class="dropdown p-3 border-top"><a
-                class="dropdown-toggle link-body-emphasis d-flex align-items-center text-decoration-none"
-                aria-expanded="false" data-bs-toggle="dropdown" role="button"><img class="rounded-circle"
-                    alt="" width="32" height="32"></a>
-            <div class="dropdown-menu shadow text-small"><a class="dropdown-item" href="/dashboard/posts/create"><i
-                        class="bi bi-upload"></i> New Post</a>
-                <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i
-                        class="bi bi-box-arrow-right"></i> Sign out</a>
-            </div>
-        </div>
+
     </div>
     @yield('isidbs')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>

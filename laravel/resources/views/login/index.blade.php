@@ -54,7 +54,6 @@
                                             id="password" placeholder="Password" required></div>
                                     <div class="mb-3"><button class="btn btn-primary d-block w-100"
                                             type="submit">Login</button></div>
-                                    <p class="text-muted">Forgot your password?</p>
                                     <p class="text-muted">belum punya akun?
                                         <a href="{{ '/register' }}">daftar sekarang</a>
                                     </p>
